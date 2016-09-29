@@ -3,13 +3,6 @@ var {connect} = require('react-redux');
 var actions = require('actions');
 
 export var TodoSearch = React.createClass({
-  // handleSearch: function () {
-  //   var showCompleted = this.refs.showCompleted.checked;
-  //   var searchText = this.refs.searchText.value;
-  //
-  //   this.props.onSearch(showCompleted, searchText);
-  // },
-
   render: function () {
     var {dispatch, showCompleted, searchText} = this.props;
 
