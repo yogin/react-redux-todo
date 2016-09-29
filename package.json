@@ -4,7 +4,9 @@
   "description": "react boilerplate",
   "main": "index.js",
   "scripts": {
-    "test": "karma start"
+    "start": "node server.js",
+    "test": "karma start",
+    "watch": "watch 'npm test' app/ tests/"
   },
   "author": "yogin",
   "license": "MIT",
@@ -37,12 +39,15 @@
     "node-sass": "^3.9.3",
     "node-uuid": "^1.4.7",
     "react-addons-test-utils": "^15.3.1",
+    "react-hot-loader": "^3.0.0-beta.5",
     "react-redux": "^4.4.5",
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",
     "sass-loader": "^4.0.2",
     "script-loader": "^0.7.0",
     "style-loader": "^0.13.1",
-    "webpack": "^1.13.2"
+    "watch": "^0.19.2",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.1"
   }
 }

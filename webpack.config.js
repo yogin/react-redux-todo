@@ -2,11 +2,13 @@ var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
-  entry: [
-    'script!jquery/dist/jquery.min.js',
-    'script!foundation-sites/dist/foundation.min.js',
-    './app/app.jsx'
-  ],
+  entry: {
+    bundle: [
+      'script!jquery/dist/jquery.min.js',
+      'script!foundation-sites/dist/foundation.min.js',
+      './app/app.jsx'
+    ]
+  },
   externals: {
     jquery: 'jQuery'
   },
@@ -14,11 +16,13 @@ module.exports = {
     new webpack.ProvidePlugin({
       '$': 'jquery',
       'jQuery': 'jquery'
-    })
+    }),
+    new webpack.HotModuleReplacementPlugin()
   ],
   output: {
-    path: __dirname,
-    filename: './public/bundle.js'
+    path: path.join(__dirname, 'build'),
+    filename: '[name].js',
+    publicPath: '/assets/'
   },
   resolve: {
     root: __dirname,
@@ -38,10 +42,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        loader: 'babel-loader',
-        query: {
-          presets: ['react', 'es2015', 'stage-0']
-        },
+        loaders: ['babel'],
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/
       }
@@ -52,5 +53,9 @@ module.exports = {
       path.resolve(__dirname, './node_modules/foundation-sites/scss')
     ]
   },
-  devtool: 'inline-source-map'
+  devtool: 'inline-source-map',
+  devServer: {
+    inline: true,
+    port: 3000
+  }
 };
